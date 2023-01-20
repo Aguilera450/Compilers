@@ -1,0 +1,10 @@
+*.md~
+*.aux
+*.log
+*.bcf
+*.rkt~
+*.tex~
+*.run.xml
+*.gitignore~
+*.fdb_latexmk
+*.syctex.gz
