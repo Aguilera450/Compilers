@@ -2,6 +2,7 @@
 *.aux
 *.log
 *.bcf
+*.out
 *.rkt~
 *.tex~
 *.run.xml
