@@ -18,7 +18,82 @@ Considera el siguiente autómata
 
 \textbf{Solución.} 
 \begin{itemize}
-\item[$a$)] 
+\item[$a$)] A continuación se da la gramática requerida, esta es
+  \begin{multicols}{2}
+    \begin{itemize}
+    \item Desde el estado A.
+      \begin{eqnarray*}
+        A_e &\rightarrowtriangle& iB_e\\
+        &\rightarrowtriangle& (a-h)D_e\\
+        &\rightarrowtriangle& (j-z)D_e\\
+        &\rightarrowtriangle& (A-Z)D_e\\
+        &\rightarrowtriangle& (\_)D_e\\
+        &\rightarrowtriangle& (.)E_e\\
+        &\rightarrowtriangle& +F_e | -F_e\\
+        &\rightarrowtriangle& (0-9)G_e
+      \end{eqnarray*}
+    \item Desde el estado B.
+      \begin{eqnarray*}
+        B_e &\rightarrowtriangle& \epsilon\\
+        &\rightarrowtriangle& (a-e)D_e\\
+        &\rightarrowtriangle& (g-z)D_e\\
+        &\rightarrowtriangle& (A-Z)D_e\\
+        &\rightarrowtriangle& (\_)D_e\\
+        &\rightarrowtriangle& (0-9)D_e\\
+        &\rightarrowtriangle& fC_e
+      \end{eqnarray*}
+    \item Desde el estado C.
+      \begin{eqnarray*}
+        C_e &\rightarrowtriangle& \epsilon\\
+        &\rightarrowtriangle& (a-z)D_e\\
+        &\rightarrowtriangle& (A-Z)D_e\\
+        &\rightarrowtriangle& (\_)D_e\\
+        &\rightarrowtriangle& (0-9)D_e
+      \end{eqnarray*}
+    \item Desde el estado D.
+      \begin{eqnarray*}
+        D_e &\rightarrowtriangle& \epsilon\\
+        &\rightarrowtriangle& (a-z)D_e\\
+        &\rightarrowtriangle& (A-Z)D_e\\
+        &\rightarrowtriangle& (\_)D_e\\
+        &\rightarrowtriangle& (0-9)D_e
+      \end{eqnarray*}
+    \item Desde el estado E.
+      \[E \rightarrowtriangle (0-9)H_e\]
+    \item Desde el estado F.
+      \begin{eqnarray*}
+        D_e &\rightarrowtriangle& (.)E_e\\
+        &\rightarrowtriangle& (0-9)G_e
+      \end{eqnarray*}
+    \item Desde el estado G.
+      \begin{eqnarray*}
+        G_e &\rightarrowtriangle& \epsilon\\
+        &\rightarrowtriangle& (0-9)G_e\\
+        &\rightarrowtriangle& (.)H_e\\
+        &\rightarrowtriangle& (eE)I_e
+      \end{eqnarray*}
+    \item Desde el estado H.
+      \begin{eqnarray*}
+        H_e &\rightarrowtriangle& \epsilon\\
+        &\rightarrowtriangle& (0-9)H_e\\
+        &\rightarrowtriangle& (eE)I_e
+      \end{eqnarray*}
+    \item Desde el estado I.
+      \begin{eqnarray*}
+        I_e &\rightarrowtriangle& +J | -J\\
+        &\rightarrowtriangle& (0-9)k_e
+      \end{eqnarray*}
+    \item Desde el estado J.
+      \[E \rightarrowtriangle (0-9)k_e\]
+    \item Desde el estado k.
+      \begin{eqnarray*}
+        k_e &\rightarrowtriangle& \epsilon\\
+        &\rightarrowtriangle& (0-9)k_e
+      \end{eqnarray*}
+    \end{itemize}
+  \end{multicols}
+  Lo anterior es la gramática definida para los estados A\footnote{En la gramática se hace
+alusión a $A_e$ para no confundir con el carácter A.}, B, C, D, E, F, G, H, J, y K.
 \item[$b$)] Para este inciso usemos el método visto en clase, así
   \begin{enumerate}
   \item Encontramos la cadena ``3e-'' del token pasando por los estados [A $\rightarrowtriangle$
