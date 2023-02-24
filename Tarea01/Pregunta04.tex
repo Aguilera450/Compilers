@@ -15,3 +15,23 @@ Considera el siguiente autómata
   anterior para tratar de identificar el mayor número de tokens posible.
 \end{itemize}
 \end{multicols}
+
+\textbf{Solución.} 
+\begin{itemize}
+\item[$a$)] 
+\item[$b$)] Para este inciso usemos el método visto en clase, así
+  \begin{enumerate}
+  \item Encontramos la cadena ``3e-'' del token pasando por los estados [A $\rightarrowtriangle$
+    G $\rightarrowtriangle$ I $\rightarrowtriangle$ J], al llegar a J realizamos backtracking para
+    llegar a I, pues no encontramos una transición que nos permita encontrar z desde j. Caso análogo
+    para I, G, y finalmente llegamos a el estado A.
+  \item Encontramos ``e'' por la transición A $\rightarrowtriangle$ D. Sin embargo, no podemos encontrar
+    el siguiente caracter del token y hacemos backtracking llegando nuevamente al estado inicial (A).
+  \item Encontramos ``-'' por la transición A $\rightarrowtriangle$ F. Sin embargo, no podemos encontrar
+    el siguiente caracter del token y hacemos backtracking llegando nuevamente al estado inicial (A).
+  \item Encontramos ``z'' por la transición A $\rightarrowtriangle$ D. Sin embargo, no podemos encontrar
+    el siguiente caracter del token y hacemos backtracking llegando nuevamente al estado inicial (A).
+  \end{enumerate}
+\end{itemize}
+%\[/* \left([\text{\textasciicircum} *\: /] | \left([\text{\textasciicircum} *] /\right)^{\star} |
+% \left([\text{\textasciicircum} /] *\right)^{\star} | [\text{\textasciicircum} * /]^{+}\right)^{\star} [*]^{\star}*/\]
