@@ -1,0 +1,81 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{amssymb, latexsym}
+\usepackage[spanish]{babel}
+\usepackage{bm} %Negritas en ecuaciones matemáticas.
+
+\usepackage{tree-dvips}
+\usepackage{qtree}
+\usepackage[linguistics]{forest}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[r]{ Adrian Aguilera Moreno\\Estructuras Discretas, Grupo: 7013}
+
+
+\begin{document}
+\section*{Instrucciones}
+\begin{enumerate}
+  \item Considera las siguientes fórmulas de LProp:
+    \begin{itemize}
+    \item $\left((p\Rightarrow (\neg q))\wedge (r\Rightarrow (\neg q))\right)$
+    \item $\left((s\vee t)\Rightarrow u\right)$
+    \item $\left((((\neg s)\vee t)\Rightarrow u)\Longleftrightarrow(r\vee (\neg r))\right)$
+    \end{itemize}
+  \item Construye (dibuja) el árbol de análisis sintáctico y el árbol de derivación de cada una de las fórmulas bien formadas del punto 1.
+\end{enumerate}
+
+\textbf{Gramática generadora de LProp}
+\begin{itemize}
+\item $P::=\ VarProp\ |\ ConstLog\ |\ (\triangleright P)\ |\ (P\Diamond P)$
+\item $VarProp::=\ p\ |\ q\ \ |\ r\ |\ u\ |\ v\ |\ s\ |\ t$
+\item $ConstLog::=\ \top\ |\ \bot$
+\item $\triangleright ::=\ \neg\ |\ ( \ |\ )$
+\item $\Diamond ::=\ \wedge\ |\ \vee\ |\ \Rightarrow\ |\ \Longleftrightarrow\ |\ ( \ |\ )$
+\end{itemize}
+\newpage
+\textbf{1.} $\left((p\Rightarrow (\neg q))\wedge (r\Rightarrow (\neg q))\right)$\\
+\textbf{Árbol de análisis sintáctico}
+\begin{center}
+  \begin{forest}
+    [$\wedge$ [$\Rightarrow$ [{$p$}] [$\neg$ [{$q$}] ] ]  [$\Rightarrow$ [{$r$}]  [$\neg$ [{$q$}]] ] ]
+  \end{forest}
+\end{center}
+\textbf{Árbol de derivación}
+\begin{center}
+  \begin{forest}
+    [P [$($] [P [P [$($] [P [VarProp [p]] [$\Diamond$ [$\Rightarrow$]] [P [$($] [P [$\triangleright$ [$\neg$]] [VarProp [$q$]]] [$)$]]] [$)$]] [$\Diamond$ [$\wedge$]] [P [$($] [P [VarProp [$r$]] [$\Diamond$ [$\Rightarrow$]] [P [$($] [P [$\triangleright$ [$\neg$]] [VarProp [$q$]]] [$)$]]] [$)$]]] [$)$]]
+  \end{forest}
+\end{center}
+\newpage
+\textbf{2.} $\left((s\vee t)\Rightarrow u\right)$\\
+\textbf{Árbol de análisis sintáctico}
+\begin{center}
+  \begin{forest}
+    [$\Rightarrow$ [$\vee$ [$s$] [$t$]] [$u$]]
+  \end{forest}
+\end{center}
+\textbf{Árbol de derivación}
+\begin{center}
+  \begin{forest}
+    [P [$($] [P [P [$($] [P [VarProp [$s$]] [$\Diamond$ [$\vee$]] [VarProp [$t$]]] [$)$]] [$\Diamond$ [$\Rightarrow$]] [VarProp [$u$]]] [$)$]]
+  \end{forest}
+\end{center}
+\textbf{3.} $\left((((\neg s)\vee t)\Rightarrow u)\Longleftrightarrow(r\vee (\neg r))\right)$\\
+\textbf{Árbol de análisis sintáctico}
+\begin{center}
+  \begin{forest}
+    [$\Longleftrightarrow$ [$\Rightarrow$ [$\vee$ [$\neg$ [$s$]] [$t$]] [$u$]] [$\vee$ [$r$] [$\neg$ [$r$]]]]
+  \end{forest}
+\end{center}
+\textbf{Árbol de derivación}
+\begin{center}
+  \begin{forest}
+    [P [$($] [P [$P$ [$($] [P [P [$($] [P [P [$($] [P [$\triangleright$ [$\neg$]] [VarProp [$s$]]] [$)$]] [$\Diamond$ [$\vee$]] [VarProp [$t$]]] [$)$]] [$\Diamond$ [$\Rightarrow$]] [VarProp [$u$]]] [$)$]] [$\Diamond$ [$\Longleftrightarrow$]] [$P$ [$($] [P [VarProp [$r$]] [$\Diamond$ [$\vee$]] [P [$($] [P [$\triangleright$ [$\neg$]] [VarProp [$r$]]] [$)$]]] [$)$]]] [$)$]]
+  \end{forest}
+\end{center}
+$$\sqrt{4^{x}}$$
+\end{document}

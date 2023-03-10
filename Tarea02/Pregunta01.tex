@@ -8,7 +8,8 @@ Construye dos derivaciones por la derecha para la cadena abaabb.\newline
 \begin{multicols}{2}
         Derivación 1.
         \begin{eqnarray*}
-                aSbS &\rightarrow& abSaSb\epsilon\\
+                S &\rightarrow& aSbS \\
+                &\rightarrow& abSaSb\epsilon\\
                 &\rightarrow& ab\epsilon aaSbSb\\
                 &\rightarrow& abaa\epsilon b\epsilon b\\
                 &\rightarrow& abaabb
@@ -16,9 +17,28 @@ Construye dos derivaciones por la derecha para la cadena abaabb.\newline
 
         Derivación 2.
         \begin{eqnarray*}
-                aSbS &\rightarrow& a\epsilon baSbS\\
+                S &\rightarrow& aSbS \\
+                &\rightarrow& a\epsilon baSbS\\
                 &\rightarrow& abaaSbSb\epsilon\\
                 &\rightarrow& abaa\epsilon b\epsilon b\\
                 &\rightarrow& abaabb
         \end{eqnarray*}
 \end{multicols}
+Los árboles de sintáxis abstracta se muestran a continuación
+\begin{multicols}{2}
+Derivación 1.
+    \begin{center}
+      \begin{forest}
+        [S [a] [S [b] [S [$\epsilon$]] [a] [S [a] [S [$\epsilon$]] [b] [S [$\epsilon$]]]] [b] [S [$\epsilon$]]]
+      \end{forest}
+    \end{center}
+
+Derivación 2.
+    \begin{center}
+      \begin{forest}
+        [S [a] [S [$\epsilon$]] [b] [S [a] [S [a] [S [$\epsilon$]] [b] [S [$\epsilon$]]] [b] [S [$\epsilon$]]]]
+      \end{forest}
+    \end{center}
+\end{multicols}
+
+Como se puede ver, el árbol de sintáxis abstracta no es único.

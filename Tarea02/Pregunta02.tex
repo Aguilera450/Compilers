@@ -1,2 +1,10 @@
 \textbf{2.} ¿Qué lenguaje genera la gramática siguiente?
 \[S \rightarrow aAb\ |\ aAA\ |\ aB\ |\ bbA \hspace*{0.3cm} A \rightarrow aAb\ |\ ab \hspace*{0.3cm} B \rightarrow bBa\ |\ ba\]
+\textbf{Solución.} Primero observemos que
+\[A \rightarrow aAb\ |\ ab\]
+puede ser traducido como expresión regular $(a^kb^k + ab)$ con $k \in \mathbb{N}/\{0\}$ y
+\[B \rightarrow bBa\ |\ ba\]
+puede ser traducido como la expresión regular $(ba + b^na^n)$ con $n \in \mathbb{N}/\{0\}$. Así, tenemos que el lenguaje
+generado por la gramática es
+\[\left(a(a^kb^k + ab)b + a(a^nb^n + ab)^2 + a(ba + b^ma^m) + bb(a^pb^p + ab)\right)\]
+con $m, p \in \mathbb{N}/\{0\}$.
