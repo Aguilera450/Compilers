@@ -1,0 +1,24 @@
+\textbf{1.} Considera la siguiente gramática:
+\[S \rightarrow aSbS | bSaS | \epsilon\]
+Construye dos derivaciones por la derecha para la cadena abaabb.\newline
+¿Cómo es el árbol se sintaxis concreta para esta cadena, es único?
+\newline
+
+\textbf{Solución.} A continuación se dan las dos derivaciones por la derecha requeridas, estas son
+\begin{multicols}{2}
+        Derivación 1.
+        \begin{eqnarray*}
+                aSbS &\rightarrow& abSaSb\epsilon\\
+                &\rightarrow& ab\epsilon aaSbSb\\
+                &\rightarrow& abaa\epsilon b\epsilon b\\
+                &\rightarrow& abaabb
+        \end{eqnarray*}
+
+        Derivación 2.
+        \begin{eqnarray*}
+                aSbS &\rightarrow& a\epsilon baSbS\\
+                &\rightarrow& abaaSbSb\epsilon\\
+                &\rightarrow& abaa\epsilon b\epsilon b\\
+                &\rightarrow& abaabb
+        \end{eqnarray*}
+\end{multicols}
