@@ -43,7 +43,6 @@
 
 % Tikz
 \usepackage{tkz-graph}
-\usepackage{tikz}
 \usetikzlibrary{arrows,automata}
 \usepackage{tikz}
 \usetikzlibrary{arrows,automata}
@@ -78,6 +77,8 @@
 \newcommand{\set}[1]{
   \left\{ #1 \right\}
 }
+\newcommand{\ffst}{\textsc{First}}
+\newcommand{\ffollow}{\textsc{Follow}}
 
 %\pagenumbering{gobble} -- Este comando
 %                       -- quita el número de página.
@@ -94,22 +95,22 @@
 \date{}
 \maketitle
 \begin{center}
-  \includegraphics[scale=0.20]{../Imagen/Portada.jpg}\\[0.4cm]
+  \includegraphics[scale=0.20]{../Imagen/Portada}\\[0.4cm]
   \Large
-  \bf{Compiladores}
-  \normalsize
+  \textbf{\normalsize}{Compiladores}
+
 \end{center}
 \newpage
 \fancyhead[r]{ Compiladores 2023-2}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{\LARGE{Tarea 02}}
-\input{./Pregunta01.tex}
+\input{./Pregunta01}
 \newpage
-\input{./Pregunta02.tex}
+\input{./Pregunta02}
 \newpage
-\input{./Pregunta03.tex}
+\input{./Pregunta03}
 \newpage
-\input{./Pregunta04.tex}
+\input{./Pregunta04}
 \newpage
-\input{./Pregunta05.tex}
+\input{./Pregunta05}
 \end{document}

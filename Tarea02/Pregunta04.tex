@@ -1,0 +1,45 @@
+\textbf{4.} La siguiente gram\'atica describe un lenguaje de consultas simple en
+donde \verb=STRING= es un s\'imbolo terminal:
+\[
+    \begin{array}{rcl}
+        \mathtt{Session} &  \to & \mathtt{Fact}\;\;\mathtt{Session} \\
+        \mathtt{Session} &  \to & \mathtt{Question} \\
+        \mathtt{Session} &  \to & \mathtt{(\,Session\,)}\;\;\mathtt{Session} \\
+        \mathtt{Fact}  & \to & \mathtt{!\,STRING}\\
+        \mathtt{Question}  & \to & \mathtt{?\,STRING}
+    \end{array}
+\]
+\begin{enumerate}
+    \item[] Calcula las funciones $\ffst$ y $\ffollow$ para los s\'imbolos
+    no-terminales de la gram\'atica.
+\end{enumerate}
+
+\begin{itemize}
+
+    \item FIRST
+
+        \begin{itemize}
+
+              \item FIRST(Session) = \{FIRST(Fact), FIRST(Question), (\}
+
+              \item FIRST(Fact) = \{!\}
+
+              \item FIRST(Question) = \{?\}
+
+        \end{itemize}
+
+    \item FOLLOW
+
+        \begin{itemize}
+
+            \item FOLLOW(Session) = \{FIRST(Session), STRING\}
+
+            \item FOLLOW(Fact) = \{STRING\}
+
+            \item FOLLOW(Question) = \{STRING\}
+
+        \end{itemize}
+
+\end{itemize}
+
+
