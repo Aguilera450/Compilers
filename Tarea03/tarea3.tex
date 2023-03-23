@@ -1,0 +1,98 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage{../packagesComp}
+\usepackage{../optionsComp}
+
+\input{../macrosComp}
+
+\title{Compiladores 2023-2\\ Facultad de Ciencias UNAM \\ Tarea 3}
+\author{Lourdes Gonz\'alez Huesca\\ Juan Alfonso Gardu\~no Sol\'is \and  
+Braulio Aaron Santiago Carrillo  \\Ma. Fernanda Mendoza Castillo}
+\date{Entrega: \textbf{viernes 24 marzo 2023}~\footnote{Entrega en la 
+plataforma classroom del grupo, en equipos de dos o tres personas.\newline
+Entrega excepcional en viernes debido al d\'ia feriado 20 de marzo.}}
+
+
+\begin{document}
+
+\maketitle
+
+% \vspace*{-30pt}
+
+\begin{enumerate}
+\item Considera la siguiente gram\'atica:
+\[
+\begin{array}{rcl}
+E & \to & -E \mid (E) \mid VE'\\
+E' & \to & -E \mid \varepsilon\\
+V & \to & \mathtt{id}V'\\
+V' & \to & (E) \mid \varepsilon\\
+\end{array}
+\]
+\begin{enumerate}
+\item Construye la tabla de parsing para un parser tipo 
+LL(1) usando el c\'alculo de los conjuntos {\ffst} y {\ffollow} que obtuviste 
+en la tarea anterior. 
+\item Muestra 
+lo que se obtiene al ejecutar el algoritmo para procesar la cadena 
+$-\mathtt{id}(-\mathtt{id})-\mathtt{id}$.
+Incluye una tabla para ver el progreso del algoritmo donde se muestre el avance 
+del procesamiento de la cadena y la evoluci\'on de la pila del parser. 
+\end{enumerate}
+
+
+
+\item Considera el siguiente fragmento de una gram\'atica que abstrae el 
+comportamiento de expresiones del lenguaje \textsf{C}:
+
+\[
+E \to *E \;\mid\; \&E \;\mid\; E = E \;\mid\; E\ -\!> E \;\mid\; id
+\]
+
+Esta gram\'atica es ambigua pero se puede transformar en una no-ambigua usando
+la precedencia de operadores.
+En particular, el acceso a campos de una estructura, $E\ -\!> E$, tiene mayor 
+precedencia que la derrefenciaci\'on y las expresiones para direcciones; 
+adem\'as, estas tres tienen mayor precedencia que las 
+asignaciones~\footnote{Puedes revisar la tabla disponible en esta 
+\href{https://justdocodings.blogspot.com/2018/06/operator-precedence-and-associativity.html}{p\'agina} 
+para consultar la precedencia y asociatividad de los operadores en \textsc{C}.}
+\begin{enumerate}
+\item Escribe una gram\'atica equivalente tipo \textbf{LL(1)} que incluya la
+precedencia descrita, muestra el proceso o describe las técnicas que uses para 
+obtener esta nueva gramática.
+\item Muestra la tabla de parsing para la gram\'atica del inciso anterior.
+\item Procesa la expresi\'on
+\verb!* * a -> b -> c = & * d!  usando el algoritmo para \textbf{LL} y 
+mostrando los estados del parser. 
+\end{enumerate}
+
+\newpage
+
+
+\item  \textbf{Hasta 1pt extra} 
+Decide  si la siguiente gram\'atica pertenece a la clase LL mediante 
+un an\'alisis de la forma de sus producciones. Justifica tu respuesta.\\
+ Si no pertenece, ?`es posible transformarla en una de esa clase? Describe la 
+idea para hacerlo. 
+\[
+\begin{array}{rcl}
+PROGRAM & \to & \texttt{begin}\; DECLIST\; \texttt{comma} \;STATELIST \;
+\texttt{end}\\
+DECLIST & \to & d\; \texttt{semi}\; DECLIST \\
+DECLIST & \to & d \\
+STATELIST & \to & s\; \texttt{semi}\; STATELIST \\
+STATELIST &\to &s
+\end{array}
+\]
+
+\item \textbf{Hasta 1pt extra} 
+Muestra que la siguiente gram\'atica pertenece a la clase \textbf{LL(1)}.
+\[
+S \to A \, a\, A\,b \;\mid\; B\,b\,B\,a \qquad \qquad  A \to \varepsilon 
+\qquad\qquad B\to \varepsilon
+\]
+
+\end{enumerate}
+
+
+\end{document}

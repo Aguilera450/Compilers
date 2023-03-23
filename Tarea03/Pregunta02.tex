@@ -1,0 +1,24 @@
+\textbf{2.} Considera el siguiente fragmento de una gram\'atica que abstrae el 
+comportamiento de expresiones del lenguaje \textsf{C}:
+
+\[
+E \to *E \;\mid\; \&E \;\mid\; E = E \;\mid\; E\ -\!> E \;\mid\; id
+\]
+
+Esta gram\'atica es ambigua pero se puede transformar en una no-ambigua usando
+la precedencia de operadores.
+En particular, el acceso a campos de una estructura, $E\ -\!> E$, tiene mayor 
+precedencia que la derrefenciaci\'on y las expresiones para direcciones; 
+adem\'as, estas tres tienen mayor precedencia que las 
+asignaciones~\footnote{Puedes revisar la tabla disponible en esta 
+\href{https://justdocodings.blogspot.com/2018/06/operator-precedence-and-associativity.html}{p\'agina} 
+para consultar la precedencia y asociatividad de los operadores en \textsc{C}.}
+\begin{enumerate}
+\item Escribe una gram\'atica equivalente tipo \textbf{LL(1)} que incluya la
+precedencia descrita, muestra el proceso o describe las técnicas que uses para 
+obtener esta nueva gramática.
+\item Muestra la tabla de parsing para la gram\'atica del inciso anterior.
+\item Procesa la expresi\'on
+\verb!* * a -> b -> c = & * d!  usando el algoritmo para \textbf{LL} y 
+mostrando los estados del parser. 
+\end{enumerate}

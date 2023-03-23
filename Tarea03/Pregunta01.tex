@@ -1,0 +1,20 @@
+\textbf{1.} Considera la siguiente gram\'atica:
+\[
+\begin{array}{rcl}
+E & \to & -E \mid (E) \mid VE'\\
+E' & \to & -E \mid \varepsilon\\
+V & \to & \mathtt{id}V'\\
+V' & \to & (E) \mid \varepsilon\\
+\end{array}
+\]
+
+\begin{enumerate}
+\item Construye la tabla de parsing para un parser tipo 
+LL(1) usando el c\'alculo de los conjuntos {\ffst} y {\ffollow} que obtuviste 
+en la tarea anterior. 
+\item Muestra 
+lo que se obtiene al ejecutar el algoritmo para procesar la cadena 
+$-\mathtt{id}(-\mathtt{id})-\mathtt{id}$.
+Incluye una tabla para ver el progreso del algoritmo donde se muestre el avance 
+del procesamiento de la cadena y la evoluci\'on de la pila del parser. 
+\end{enumerate}
