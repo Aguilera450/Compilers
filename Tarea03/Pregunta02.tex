@@ -32,9 +32,58 @@ ahora, quitemos las ambig\"uedades de izquierda a derecha, esto es
          P &\to& *A \;\mid\; \&A \;\mid\; A = P \;\mid\; A \\
          A &\to& id
 \end{eqnarray*}
-lo anterio con base a \href{https://barcelonageeks.com/eliminacion-de-ambiguedad-conversion-de-una-gramatica-ambigua-en-gramatica-inequivoca/}{Eliminaci\'on de ambig\"uedad}. 
+lo anterio con base a \href{https://barcelonageeks.com/eliminacion-de-ambiguedad-conversion-de-una-gramatica-ambigua-en-gramatica-inequivoca/}{Eliminaci\'on de ambig\"uedad}.
+
+Quitando la recursividad por la izquierda tenemos que
+\begin{eqnarray*}
+         (0)\;\; E &\to& PE' \;\mid\; P\\
+         (1)\; E' &\to& \ -\!> P\\
+         (2)\; P &\to& *A \;\mid\; \&A \;\mid\; A = P \;\mid\; A \\
+         (3)\; A &\to& id
+\end{eqnarray*}
+La gramática anterior es no recursiva por la izquierda y no ambigua.
 \item Muestra la tabla de parsing para la gram\'atica del inciso anterior.
 
+\textbf{Solución:} Ahora construyamos la tabla parsing, esto es
+\begin{table}[h]
+        \centering
+        \caption{FIRST y FOLLOW}
+        \label{tab:parsing}
+        \begin{tabular}{|c|c|c|}
+                \hline
+                  & FIRST & FOLLOW \\
+                \hline
+                 E & $*$, $\&$, id & $=$ \\
+                \hline
+                 E' & $-\!>$ & $=$\\
+                \hline
+                 P & $*$, $\&$, id & $=$\\
+                \hline
+                 A & id & $=$\\
+                \hline
+        \end{tabular}
+\end{table}
+
+luego, calculemos la tabla de parsing, a continuación se muestra
+\begin{table}[h]
+        \centering
+        \caption{Tabla de Parsing}
+        \label{tab:parsing}
+        \begin{tabular}{|c|c|c|c|c|c|}
+                \hline
+                   & $-\!>$ & $*$ & $\&$ & $=$ & id \\
+                \hline
+                E  & & (0) & (0) & & (0) \\
+                \hline
+                E' & (1) & & & &\\
+                \hline
+                P  & & (2) & (2) & & (2) \\
+                \hline
+                A  & (3) & & & & \\
+                \hline
+        \end{tabular}
+\end{table}
+Así, finalizamos este inciso.
 \item Procesa la expresi\'on
 \verb!* * a -> b -> c = & * d!  usando el algoritmo para \textbf{LL} y 
 mostrando los estados del parser. 
