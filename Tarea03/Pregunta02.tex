@@ -30,6 +30,8 @@ ahora, quitemos las ambig\"uedades de izquierda a derecha, esto es
 \begin{eqnarray*}
          E &\to& E\ -\!> P\;\mid\; P\\
          P &\to& *A \;\mid\; \&A \;\mid\; A = P \;\mid\; A \\
+         %P' &\to& *P' \;\mid\ A\\
+         %P'' &\to& \&P'' \;\mid\ A\\
          A &\to& id
 \end{eqnarray*}
 lo anterio con base a \href{https://barcelonageeks.com/eliminacion-de-ambiguedad-conversion-de-una-gramatica-ambigua-en-gramatica-inequivoca/}{Eliminaci\'on de ambig\"uedad}.
@@ -37,9 +39,11 @@ lo anterio con base a \href{https://barcelonageeks.com/eliminacion-de-ambiguedad
 Quitando la recursividad por la izquierda tenemos que
 \begin{eqnarray*}
          (0)\;\; E &\to& PE' \;\mid\; P\\
-         (1)\; E' &\to& \ -\!> P\\
-         (2)\; P &\to& *A \;\mid\; \&A \;\mid\; A = P \;\mid\; A \\
-         (3)\; A &\to& id
+         (1)\; E' &\to& \ -\!> P \;\mid\; \ -\!> E\\
+         (2)\; P &\to& *P \;\mid\; \&P \;\mid\; A = P \;\mid\; A \\
+         %(3)\; P' &\to& *P' \;\mid\ A\\
+         %(4)\; P'' &\to& \&P'' \;\mid\ A\\
+         (5)\; A &\to& id
 \end{eqnarray*}
 La gramática anterior es no recursiva por la izquierda y no ambigua.
 \item Muestra la tabla de parsing para la gram\'atica del inciso anterior.
@@ -55,10 +59,14 @@ La gramática anterior es no recursiva por la izquierda y no ambigua.
                 \hline
                  E & $*$, $\&$, id & $=$ \\
                 \hline
-                 E' & $-\!>$ & $=$\\
+                 E' & $-\!>$, $*$, $\&$, id & $=$\\
                 \hline
                  P & $*$, $\&$, id & $=$\\
                 \hline
+                 %P' & $*$, id & $=$\\
+                 %\hline
+                 %P'' & $\&$, id & $=$\\
+                 %\hline
                  A & id & $=$\\
                 \hline
         \end{tabular}
@@ -75,16 +83,44 @@ luego, calculemos la tabla de parsing, a continuación se muestra
                 \hline
                 E  & & (0) & (0) & & (0) \\
                 \hline
-                E' & (1) & & & &\\
+                E' & (1) & (1) & (1) & & (1) \\
                 \hline
                 P  & & (2) & (2) & & (2) \\
+                %\hline
+                %P'  & & (3) & & & (3) \\
+                %\hline
+                %P''  & & & (4) & & (4) \\
                 \hline
-                A  & (3) & & & & \\
+                A  & (5) & & & & \\
                 \hline
         \end{tabular}
 \end{table}
 Así, finalizamos este inciso.
 \item Procesa la expresi\'on
 \verb!* * a -> b -> c = & * d!  usando el algoritmo para \textbf{LL} y 
-mostrando los estados del parser. 
+mostrando los estados del parser.
+
+\textbf{Solución:}
+\begin{eqnarray*}
+        E &\to& PE'\\
+        &\to& *P'E'\\
+        &\to& **P'E'\\
+        &\to& **idE'\\
+        &\to& **aE'\\
+        &\to& ** a -\!> E\\
+        &\to& ** a -\!> PE'\\
+        &\to& ** a -\!> AE'\\
+        &\to& ** a -\!> idE'\\
+        &\to& ** a -\!> bE'\\
+        &\to& ** a -\!> b -\!> E\\
+        &\to& ** a -\!> b -\!> P\\
+        &\to& ** a -\!> b -\!> A=P\\
+        &\to& ** a -\!> b -\!> id=P\\
+        &\to& ** a -\!> b -\!> a=P\\
+        &\to& ** a -\!> b -\!> a=\&P\\
+        &\to& ** a -\!> b -\!> a=\&*P\\
+        &\to& ** a -\!> b -\!> a=\&*A\\
+        &\to& ** a -\!> b -\!> a=\&*id\\
+        &\to& ** a -\!> b -\!> a=\&*d\\
+\end{eqnarray*}
 \end{enumerate}
