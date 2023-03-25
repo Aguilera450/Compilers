@@ -1,20 +1,124 @@
 \textbf{1.} Considera la siguiente gram\'atica:
 \[
-\begin{array}{rcl}
-E & \to & -E \mid (E) \mid VE'\\
-E' & \to & -E \mid \varepsilon\\
-V & \to & \mathtt{id}V'\\
-V' & \to & (E) \mid \varepsilon\\
-\end{array}
+    \begin{array}{rcl}
+        E & \to & -E \mid (E) \mid VE'\\
+        E' & \to & -E \mid \varepsilon\\
+        V & \to & \mathtt{id}V'\\
+        V' & \to & (E) \mid \varepsilon\\
+    \end{array}
 \]
-
 \begin{enumerate}
-\item Construye la tabla de parsing para un parser tipo 
-LL(1) usando el c\'alculo de los conjuntos {\ffst} y {\ffollow} que obtuviste 
-en la tarea anterior. 
-\item Muestra 
-lo que se obtiene al ejecutar el algoritmo para procesar la cadena 
-$-\mathtt{id}(-\mathtt{id})-\mathtt{id}$.
-Incluye una tabla para ver el progreso del algoritmo donde se muestre el avance 
-del procesamiento de la cadena y la evoluci\'on de la pila del parser. 
+
+    \item Construye la tabla de parsing para un parser tipo
+    LL(1) usando el c\'alculo de los conjuntos {\ffst} y {\ffollow} que obtuviste
+    en la tarea anterior.
+
+    \[
+        \begin{array}{rcl}
+        (0) S & \to & E\$ \\
+        (1) E & \to & -E \\
+        (2) E & \to & (E)\\
+        (3) E & \to & VE'\\
+        (4) E' & \to & -E \\
+        (5) E' & \to & \varepsilon\\
+        (6) V & \to & \mathtt{id}V'\\
+        (7) V' & \to & (E) \\
+        (8) V' & \to & \varepsilon\\
+        \end{array}
+    \]
+
+        \begin{table}[h]
+            \centering
+            \caption{Tabla de Parsing}
+            \label{tab:parsing}
+            \begin{tabular}{|c|c|c|c|c|c|}
+
+                \hline
+                  & - & ( & ) & id & \$ \\
+                \hline
+                S & (0) & (0) & & (0) & \\
+                \hline
+                E & (1) & (2) &  & (3) &\\
+                \hline
+                E' & (4) & & (5) & & (5) \\
+                \hline
+                V & & & & (6) & \\
+                \hline
+                V' & (8) & (7) & (8) & & (8) \\
+                \hline
+
+            \end{tabular}
+        \end{table}
+
+
+    \item Muestra lo que se obtiene al ejecutar el algoritmo para procesar la cadena
+    $-\mathtt{id}(-\mathtt{id})-\mathtt{id}$.
+    Incluye una tabla para ver el progreso del algoritmo donde se muestre el avance
+    del procesamiento de la cadena y la evoluci\'on de la pila del parser.
+    
+        \begin{table}[h]
+            \centering
+            \caption{Tabla del progreso del algoritmo}
+            \label{tab:3.2}
+            \begin{tabular}{|l|r|l|}
+
+                \hline
+                Pila del Parser & Cadena & Regla aplicada \\
+                \hline
+                \$S & $-\mathtt{id}(-\mathtt{id})-\mathtt{id}\$$ & \\
+                \hline
+                \$E & $-\mathtt{id}(-\mathtt{id})-\mathtt{id}\$$ & $S \to E$ \\
+                \hline
+                \$E- & $-\mathtt{id}(-\mathtt{id})-\mathtt{id}\$$ & $E \to -E$ \\
+                \hline
+                \$E & $\mathtt{id}(-\mathtt{id})-\mathtt{id}\$$ & \\
+                \hline
+                \$E'V & $\mathtt{id}(-\mathtt{id})-\mathtt{id}\$$ & $E \to VE'$ \\
+                \hline
+                \$E'V'id & $\mathtt{id}(-\mathtt{id})-\mathtt{id}\$$ & $V \to idV'$ \\
+                \hline
+                \$E'V' & $(-\mathtt{id})-\mathtt{id}\$$ & \\
+                \hline
+                \$E')E( & $(-\mathtt{id})-\mathtt{id}\$$ & $V' \to (E)$ \\
+                \hline
+                \$E')E & $-\mathtt{id})-\mathtt{id}\$$ & \\
+                \hline
+                \$E')E- & $-\mathtt{id})-\mathtt{id}\$$ & $E \to -E$ \\
+                \hline
+                \$E')E & $\mathtt{id})-\mathtt{id}\$$ & \\
+                \hline
+                \$E')E'V & $\mathtt{id})-\mathtt{id}\$$ & $E \to VE'$ \\
+                \hline
+                \$E')E'V'id & $\mathtt{id})-\mathtt{id}\$$ & $V \to idV'$ \\
+                \hline
+                \$E')E'V' & $)-\mathtt{id}\$$ & \\
+                \hline
+                \$E')E' & $)-\mathtt{id}\$$ & $V' \to \epsilon$ \\
+                \hline
+                \$E') & $)-\mathtt{id}\$$ & $E' \to \epsilon$ \\
+                \hline
+                \$E' & $-\mathtt{id}\$$ & \\
+                \hline
+                \$E- & $-\mathtt{id}\$$ & $E' \to -E$ \\
+                \hline
+                \$E & $\mathtt{id}\$$ & \\
+                \hline
+                \$E'V & $\mathtt{id}\$$ & $E \to VE'$ \\
+                \hline
+                \$E'V'id & $\mathtt{id}\$$ & $V \to idV'$ \\
+                \hline
+                \$E'V' & \$ & \\
+                \hline
+                \$E' & \$ & $V' \to \epsilon$ \\
+                \hline
+                \$ & \$ & $E' \to \epsilon$ \\
+                \hline
+                \$ & \$ & ACEPTADA \\
+                \hline
+
+            \end{tabular}
+        \end{table}
+        
+    
+
 \end{enumerate}
