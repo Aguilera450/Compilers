@@ -17,7 +17,24 @@ para consultar la precedencia y asociatividad de los operadores en \textsc{C}.}
 \item Escribe una gram\'atica equivalente tipo \textbf{LL(1)} que incluya la
 precedencia descrita, muestra el proceso o describe las técnicas que uses para 
 obtener esta nueva gramática.
+
+\textbf{Solución:} A continuación se muestra la gramática con precedencia (solo un reacomodo)
+y con ambig\"uedad:
+\[ E \to E\ -\!> E \;\mid\; *E \;\mid\; \&E \;\mid\; E = E \;\mid\; id\]
+quitando ambig\"uedades de derecha a izquierda tenemos que
+\begin{eqnarray*}
+         E &\to& E\ -\!> P\; |\; P\\
+         P &\to& *P \;\mid\; \&P \;\mid\; P = P \;\mid\; id
+\end{eqnarray*}
+ahora, quitemos las ambig\"uedades de izquierda a derecha, esto es
+\begin{eqnarray*}
+         E &\to& E\ -\!> P\;\mid\; P\\
+         P &\to& *A \;\mid\; \&A \;\mid\; A = P \;\mid\; A \\
+         A &\to& id
+\end{eqnarray*}
+lo anterio con base a \href{https://barcelonageeks.com/eliminacion-de-ambiguedad-conversion-de-una-gramatica-ambigua-en-gramatica-inequivoca/}{Eliminaci\'on de ambig\"uedad}. 
 \item Muestra la tabla de parsing para la gram\'atica del inciso anterior.
+
 \item Procesa la expresi\'on
 \verb!* * a -> b -> c = & * d!  usando el algoritmo para \textbf{LL} y 
 mostrando los estados del parser. 
