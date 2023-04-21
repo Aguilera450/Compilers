@@ -1,0 +1,71 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage{../packagesComp}
+\usepackage{../optionsComp}
+
+\input{../macrosComp}
+
+\title{Compiladores 2023-2\\ Facultad de Ciencias UNAM \\ Tarea 4}
+\author{Lourdes Gonz\'alez Huesca\\ Juan Alfonso Gardu\~no Sol\'is \and  
+Braulio Aaron Santiago Carrillo  \\Ma. Fernanda Mendoza Castillo}
+\date{Entrega: \textbf{jueves 20 abril 2023}~\footnote{Entrega en la 
+plataforma classroom del grupo, en equipos de dos o tres personas.}}
+
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+\item \textbf{(2pts.)} Considera la siguiente gram\'atica donde $E$ es el s\'imbolo
+inicial:
+\[
+\begin{array}{rcl}
+E & \to & Aa\\
+A & \to & BC \mid BCf\\
+B & \to & b\\
+C & \to & c\\
+\end{array}
+\]
+\begin{enumerate}
+\item Construye los conjuntos can\'onicos de items \textbf{LR(0)}.
+\item Con estos conjuntos construye el aut\'omtata finito mostrando las transiciones
+con la funci\'on {\fgoto}.
+\item Muestra la tabla de parsing que se genera usando el aut\'omata anterior. 
+\end{enumerate}
+
+\item Considera la siguiente gram\'atica donde $A$ es el s\'imbolo inicial:
+\[
+\begin{array}{rcl}
+A & \to & bB \\
+B & \to & cC \\
+B & \to & cCe \\
+C & \to & dA\\
+A & \to & a\\
+\end{array}
+\]
+\begin{enumerate}
+\item \textbf{(1pt.)} Describe formalmente el lenguaje que acepta la gram\'atica.
+\item \textbf{(3pts.)} Proporciona el aut\'omata para construir la tabla de 
+parsing \textbf{LR(1)}.
+\item \textbf{(1pt.)} De ser posible, analiza una cadena no trivial y de longitud 
+al menos 4, mostrando la secuencia de acciones del aut\'omata mediante una tabla 
+que incluya al menos la actualizaci\'on de la cadena de entrada y la actualizaci\'on
+de la pila.
+\end{enumerate}
+
+
+\item \textbf{(3pts.)} Muestra que la siguiente gram\'atica pertenece a la 
+clase \textbf{LL(1)} pero no a la clase \textbf{SLR} ($E$ es el s\'imbolo inicial).
+\[
+E \to A \, a\, A\,b \;\mid\; B\,b\,B\,a \qquad \qquad  A \to \varepsilon 
+\qquad\qquad B\to \varepsilon
+\]
+
+\item \textbf{(Hasta 1.5pts. extra)} Realiza una tabla comparativa entre los estilos de parsing LL, LR0, SLR y LR1. Incluye caracter\'isticas o descripciones breves de las coincidencias o diferencias entre ellos.  
+No olvides agregar las referencias, libros o p\'aginas web, consultadas.
+
+
+
+\end{enumerate}
+
+\end{document}
