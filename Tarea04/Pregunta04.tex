@@ -5,3 +5,39 @@ de parsing LL, LR0, SLR y LR1. Incluye caracter\'isticas o descripciones breves
 de las coincidencias o diferencias entre ellos. \newline
 
 No olvides agregar las referencias, libros o p\'aginas web, consultadas.
+
+
+\begin{table}[h]
+    \centering
+    \caption{Tabla comparativa de estilos de parsing}
+    \label{tab:comparativa-parsing}
+    \begin{tabular}{|l|p{5cm}|p{4cm}|p{4cm}|}
+        \hline
+        \textbf{Estilo de Parsing} & \textbf{Características} & \textbf{Ventajas} & \textbf{Desventajas} \\
+        \hline
+        LL & Utiliza una estrategia de análisis descendente, basada en la construcción de una tabla de análisis sintáctico.
+        & Sencillo de entender y de implementar. Útil para gramáticas simples. & No puede manejar gramáticas ambiguas.
+        Limitado en su capacidad de manejar ciertos tipos de gramáticas. \\
+        \hline
+        LR0 & Utiliza una estrategia de análisis descendente que utiliza un autómata finito. & Puede manejar un amplio rango de gramáticas. & No puede manejar gramáticas ambiguas. Puede generar muchos conflictos de reducción-desplazamiento. \\
+        \hline
+        SLR & Basado en LR0, pero utiliza información adicional sobre los símbolos de entrada para resolver conflictos. & Mayor capacidad para manejar gramáticas ambiguas que LR0. & No puede manejar ciertos tipos de gramáticas complejas. \\
+        \hline
+        LR1 & Basado en SLR, pero utiliza información adicional sobre los símbolos de entrada y de pila para resolver conflictos. & Puede manejar una amplia variedad de gramáticas, incluyendo aquellas con recursión a izquierda y ambigüedad. & Más complejo y difícil de implementar que otros estilos de parsing. Requiere más memoria y tiempo de procesamiento. \\
+        \hline
+    \end{tabular}
+\end{table}
+
+    Entre las caracteristicas que tienen en comun estos estilos de parsing se encuentran :
+
+\begin{itemize}
+    \item Utilizan una pila para almacenar símbolos de la gramática.\\
+    \item Utilizan una tabla de análisis para decidir qué acción tomar en función del estado actual de la pila y el símbolo de entrada.\\
+    \item Tienen como objetivo construir un árbol de análisis sintáctico que represente la estructura sintáctica de una cadena de entrada dada\\
+\end{itemize}
+
+\section*{Referencias}
+
+\begin{itemize}
+    \item "Parsing Techniques: A Practical Guide" by Dick Grune and Ceriel J.H. Jacobs.
+\end{itemize}
