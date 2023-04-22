@@ -1,8 +1,13 @@
 % Pregunta 3:
-
+\newpage
 \textbf{(3pts.)} Muestra que la siguiente gram\'atica pertenece a la 
 clase \textbf{LL(1)} pero no a la clase \textbf{SLR} ($E$ es el s\'imbolo inicial).
 \[
 E \to A \, a\, A\,b \;\mid\; B\,b\,B\,a \qquad \qquad  A \to \varepsilon 
 \qquad\qquad B\to \varepsilon
 \]
+
+\textbf{Solución.} Nótese que la gramática dada es recursiva por la izquierda, en base
+a la definición marcada de $LL(1)$. Entonces, la gramática cumple con pertencer a $LL(1)$.
+Sin embargo, la gramática no cumple ser $LR(1)$ sencillo, pues la derivación no es por
+la derecha.
