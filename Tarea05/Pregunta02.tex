@@ -12,4 +12,27 @@ notaci\'on infija (utiliza los par\'entesis necesarios).
 Explica la idea que usas para definir las funciones sem\'anticas.\\
 Por ejemplo, si las hojas del parse tree (de izquierda a derecha) son 
 $A\; A\; B \; - \;* \; C \;/$ entonces la ra\'iz debe tener como atributo 
-\texttt{val} la cadena $((A*(A-B))/C)$.
+\texttt{val} la cadena $((A*(A-B))/C)$.\newline
+
+\textbf{Solución:}
+\begin{center}
+  \begin{tabular}{| c | c |}
+    \hline
+    Producciones & Reglas Semánticas \\ \hline
+    $S \rightarrow (E)$                  & $S.\code{val} :=$ $E$.\code{val} \\
+    $E \rightarrow ((E_1)\: (E_2)\: op)$ & $E.\code{val} :=$ $E_1$.\code{val} $op$ $E_2$.\code{val}\\
+    $E \rightarrow id$                   & $E.\code{name} :=$ $id$.\code{name}  \\
+    $op \rightarrow +$                   & $op.\code{val} :=$ $+$  \\
+    $op \rightarrow -$                   & $op.\code{val} :=$ $-$  \\
+    $op \rightarrow *$                   & $op.\code{val} :=$ $*$  \\
+    $op \rightarrow /$                   & $op.\code{val} :=$ $/$  \\ \hline
+  \end{tabular}
+\end{center}
+
+A continuación se muestra el árbol para oganizar \code{val} respecto a $((A (A B -) *) C /)$:
+\begin{center}
+        \includegraphics[width=.85\textwidth]{./02.png}
+\end{center}
+Cómo podemos notar, $S \rightarrow E = ((A * (A - B)) / C)$ que es generado por las reglas semánticas definidas. La
+idea es ir aplicando recursión de hojas a raíz, y siguiendo las reglas de semánticas. De esta manera pasamos de
+notación polaca inversa a sufija.
