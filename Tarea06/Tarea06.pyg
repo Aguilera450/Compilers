@@ -1,0 +1,5 @@
+ d := c + 8
+ a := a + b/$^{last}$/
+ M[d/$^{last}$/] := a
+ IF a < c THEN L1 ELSE L2
+ LABEL L1
