@@ -1,5 +1,6 @@
 *.md~
 *.aux
+*.pyg
 *.log
 *.bcf
 *.out
