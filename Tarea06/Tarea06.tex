@@ -25,7 +25,7 @@
 \newcommand{\code}[1]{\textcolor{white!25!black}{\texttt{#1}}}
 \usepackage{listings}
 \usepackage{verbatim} % Código: https://tex.stackexchange.com/questions/247404/end-verbatim-command
-\usepackage{minted} % Código: https://es.overleaf.com/learn/latex/Code_Highlighting_with_minted
+
 
 %AMS
 \usepackage{amsthm}
@@ -45,8 +45,6 @@
 
 % Tikz
 \usepackage{tkz-graph}
-\usepackage{tikz}
-\usetikzlibrary{arrows,automata}
 \usepackage{tikz}
 \usetikzlibrary{arrows,automata}
 %\usetikzlibrary[topaths]
@@ -75,6 +73,7 @@
 
 %Header-Footer
 \usepackage{fancyhdr}
+\usepackage{mathtools}
 \renewcommand{\headrulewidth}{1pt}
 
 \newcommand{\set}[1]{
@@ -88,12 +87,14 @@
 
 \pagestyle{fancyplain}
 
-\begin{document}
 \title{UNIVERSIDAD NACIONAL AUT\'ONOMA DE M\'EXICO\\ Facultad de Ciencias}
 \author{Integrantes: \\
-  Adri\'an Aguilera Moreno\\
-  Sebastián Alejandro Gutierrez Medina}
+Adri\'an Aguilera Moreno\\
+Sebastián Alejandro Gutierrez Medina}
 \date{}
+
+\begin{document}
+
 \maketitle
 \begin{center}
   \includegraphics[scale=0.20]{../Imagen/Portada.jpg}\\[0.4cm]
