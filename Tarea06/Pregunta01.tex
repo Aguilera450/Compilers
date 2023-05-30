@@ -17,5 +17,40 @@ Describe una forma de traducir este enunciado a c\'odigo de tres direcciones
 Explica y justifica que el c\'odigo de tres direcciones propuesto respeta el 
 mismo comportamiento que el \texttt{switch}.\newline
 
-\textbf{Solución:} 
+\textbf{Solución:} Especificamos a $S_i$ y $V_j$, con $i \in [1, \dotsm, n]$
+y $j \in [1, \dotsm, n - 1]$, cómo una expresión en código de 3 direcciones
+(sino, basta con obtener el código de 3 direcciones para $S_i$ y $V_j$). A
+continuación se muestra el código en tres direcciones de la expresión \code{switch}:
 
+\begin{itemize}
+\item Para un \code{case} con $V_j$ y $S_i \not= S_{n}$ tenemos que
+
+recorrer($V_j$, $n$):\\
+\hspace*{0.2cm} \code{if ($V_j$) goto $S'_i$;} \hspace{6.8cm} con\ $i = j$.\\
+\hspace*{0.2cm} \code{else: recorrer($V_j$, $n + 1$);}\\
+
+con $n$ inicialmente en $0$.\\
+
+$S'_i$:\\
+\hspace*{0.2cm} \code{$S_i$;}\\
+\hspace*{0.2cm} \code{break;}
+\item Para el caso \code{default} tenemos que\newline
+
+\code{default:}\\
+\hspace*{0.2cm} \code{goto $S'_n$;}\\
+
+\code{$S'_n$:}\\
+\hspace*{0.2cm} \code{$S_n$;}\\
+\hspace*{0.2cm} \code{break;}
+\item Ahora, construyendo el \code{switch} tenemos que\newline
+
+\code{switch ($V_j$):}\\
+\hspace*{0.2cm} \code{if ($j < n$) goto recorrer($V_j$, $0$);}\\
+\hspace*{0.2cm} \code{else: goto default;}\newline
+\end{itemize}
+
+La definición anterior funciona, pues de manera recursiva comprobamos
+que siempre que $j < n$ buscamos el ``salto'' a la instrucción $S'_i$
+adecuado a $j$ tal que $j = i$. Si $j > n$ entonces se acciona la
+intrucción \code{default} que es justamente cómo funciona la instruccón
+\code{switch}.
