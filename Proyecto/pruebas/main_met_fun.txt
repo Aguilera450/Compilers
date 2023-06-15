@@ -1,0 +1,12 @@
+main() {
+  suma(1,2)
+}
+
+print(a:bool, b: bool) {
+  return a
+}
+
+suma(a: int, b: int) : int {
+  return b * 1
+}
+

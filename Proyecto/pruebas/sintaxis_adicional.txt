@@ -1,0 +1,15 @@
+main(){
+
+int a, b, c
+a = b = c = 0
+
+a+=5
+b-=a
+
+//i++
+//j--
+
+c : int = (a > b) ? a : b
+
+}
+

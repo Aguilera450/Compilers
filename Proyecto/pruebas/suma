@@ -1,0 +1,9 @@
+main() {
+  a : int = 0
+  b : int = 0
+  suma(a, b)
+}
+
+suma(a:int, b:int) : int {
+  return a + b
+}

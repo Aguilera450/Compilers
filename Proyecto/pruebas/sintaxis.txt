@@ -1,0 +1,9 @@
+main() {
+
+  f:int
+  f:int = gdc(1,2)
+}
+
+gdc(a: int, b: int) : int {
+  a + b
+}

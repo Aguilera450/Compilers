@@ -1,0 +1,34 @@
+main(){
+    largestprime(1000000)
+}
+
+gcd(a:int, b:int):int {
+    while a != 0 {
+        if (a<b)  b = b - a // con parentesis
+        else    a = a - b
+    }
+    return b
+}
+
+isprime(n:int):bool {
+    i:int = 2
+    while ((i*i) <= n) {
+        if gcd(i , n) != 1 { // sin parentesis
+            return False
+        }
+        i++
+    }
+    return True
+}
+
+largestprime(max:int):int {
+    a:int = 1 
+    largest:int = 1
+    while a < max {
+      if isprime(a)  { // debe tener llaves
+            largest = a
+      }
+      a++
+    }
+    return largest
+}

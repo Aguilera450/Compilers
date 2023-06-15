@@ -1,0 +1,6 @@
+main() { 
+  producto :int = 0
+  for(i:int=0, i<3, i++) {
+  producto = producto * i
+  }
+}
