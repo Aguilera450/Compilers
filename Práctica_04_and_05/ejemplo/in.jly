@@ -1,0 +1,19 @@
+{-
+Hola
+-}
+
+main{
+    if (a > b)
+        j++
+    else
+        i++
+    i++
+    j++
+}
+
+gdc(varu:int, vard:int): int{
+    if (varu > vard)  vard + varu
+    else  varu + vard
+    return b
+}
+
