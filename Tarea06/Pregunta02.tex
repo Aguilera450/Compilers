@@ -2,9 +2,57 @@
 Considera el siguiente c\'odigo:
 \begin{verbatim}
 int mul(int x, int y) {
-if (x) return y - (0 - mul(x + 1, y)); 
-   else return 0; }
+    if (x)
+        return y - (0 - mul(x + 1, y));
+   else
+        return 0;
+}
 \end{verbatim}
 Proporciona una traducci\'on a RTL suponiendo que ya se han seleccionado 
 las instrucciones. \\Deber\'as mostrar las traducciones intermedias de 
 subexpresiones del c\'odigo.
+
+\[
+    \begin{array}{l l}
+
+        mul(2) & \\
+          &  entry: \ L24\\
+          &  locals: \ \#10 \ \#11\\
+         & \\
+        L24 & alloc\_frame \ \rightarrow \ L23\\
+        L23 & mov \ \%rbx \ \#10 \ \rightarrow \ L22\\
+        L22 & mov \ \%r12 \ \#11 \ \rightarrow \ L21\\
+        L21 & mov \ \%rdi \ \#1 \ \rightarrow \ L20\\
+        L20 & mov \ \%rdi \ \#2 \ \rightarrow \ L15\\
+         & \\
+        L15 & mov \ \#1 \ \#8 \ \rightarrow \ L14\\
+        L14 & mov \ \#2 \ \#9 \ \rightarrow \ L13\\
+        L13 & jle \ \#8 \ \rightarrow \ L12, \ L02\\
+         & \\
+        L12 & mov \ \#1 \ \#6 \ \rightarrow \ L11\\
+        L11 & mov \ \#2 \ \#7 \ \rightarrow \ L10\\
+        L10 & add \ \$1 \ \#6 \ \rightarrow \ L09\\
+        L09 & goto \ \rightarrow \ L19\\
+        L19 & mov \ \#6 \ \%rdi \ \rightarrow \ L18\\
+        L18 & mov \ \#7 \ \%rdi \ \rightarrow \ L17\\
+        L17 & call \ mul(2) \ \rightarrow \ L16\\
+        L16 & mov \ \%rax \ \#4 \ \rightarrow \ L20\\
+        L08 & imul \ \$-1 \ \#4 \ \rightarrow \ L07\\
+        L07 & add \ \$0 \ \#4 \ \rightarrow \ L06\\
+        L06 & mov \ \#2 \ \#5 \ \rightarrow \ L05\\
+        L05 & mov \ \#4 \ \#3 \ \rightarrow \ L04\\
+        L04 & imul \ \$-1 \ \#3 \ \rightarrow \ L03\\
+        L03 & add \ \#5 \ \#3 \ \rightarrow \ L01\\
+         & \\
+        L01 & goto \ \rightarrow \ L29\\
+        L29 & mov \ \#3 \ \%rax \ \rightarrow \ L28\\
+        L28 & mov \ \#10 \ \%rbx \ \rightarrow \ L27\\
+        L27 & mov \ \#11 \ \%r12 \ \rightarrow \ L26\\
+        L26 & delete\_frame \ \rightarrow \ L25\\
+        L25 & return \\
+        \\
+        L02 & mov \ \$0 \ \#3 \ \rightarrow \ L01\\
+
+    \end{array}
+\]
+
